@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16    # Используем стабильную версию 16, а не latest
+    container_name: my-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: my_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_RcCenter:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  pg_RcCenter:
