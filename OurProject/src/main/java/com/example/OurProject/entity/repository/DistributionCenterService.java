@@ -1,8 +1,10 @@
 package com.example.OurProject.entity.repository;
 
 import com.example.OurProject.entity.DistributionCenter;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -25,10 +27,11 @@ public class DistributionCenterService {
 
         return baseConnectionRepository.findById(id).orElseThrow(() -> new RuntimeException("Сущность с ID " + id + " не найдена"));
     }
-
+@NotNull
     public DistributionCenter update(Long id, DistributionCenter distributionCenter) {
         DistributionCenter existingCenter = getById(id);
         existingCenter.setName(distributionCenter.getName());
+       existingCenter.setCreatedDate(LocalDateTime.now());
         existingCenter.setCity(distributionCenter.getCity());
         existingCenter.setAdress(distributionCenter.getAdress());
         existingCenter.setActive(distributionCenter.getActive());

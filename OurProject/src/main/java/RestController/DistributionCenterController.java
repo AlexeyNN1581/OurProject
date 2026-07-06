@@ -2,32 +2,48 @@ package RestController;
 
 import com.example.OurProject.entity.DistributionCenter;
 import com.example.OurProject.entity.repository.DistributionCenterService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-public class DistributionCenterController  {
-    private DistributionCenterService centerService ;
+public class DistributionCenterController {
+    private final DistributionCenterService centerService;
 
-    public DistributionCenterController (DistributionCenterService distributionCenterService) {
-        this.centerService  = distributionCenterService;
+    public DistributionCenterController(DistributionCenterService distributionCenterService) {
+        this.centerService = distributionCenterService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public List<DistributionCenter> getall() {
-       return centerService .getAll();
+        return centerService.getAll();
 
 
     }
 
     @GetMapping("/{id}")
     public DistributionCenter getCenterServiceById(
-            @PathVariable("/{id}") Long id) {
-      return   centerService .getById(id);
+            @PathVariable Long id) {
+        return centerService.getById(id);
 
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteCentrById(
+            @PathVariable Long id){
+
+      centerService.delete(id);
+
+    }
+
+    @PostMapping
+    public DistributionCenter createCenter(@RequestBody DistributionCenter center) {
+        return centerService.create(center);
+    }
+    @PutMapping("/{id}")
+    public DistributionCenter putCentr(@RequestParam Long id,@RequestBody DistributionCenter center){
+        return  centerService.update(id,center);
+
+
+}
 }

@@ -3,6 +3,7 @@ package com.example.OurProject.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -15,10 +16,10 @@ public class DistributionCenter {
     private String city;
     private String adress;
     private Boolean isActive;
-    private Date createdDate;
+    private LocalDateTime createdDate;
 
 
-    public DistributionCenter(Long id, String name, String city, String adress, Date createdDate, Boolean isActive) {
+    public DistributionCenter(Long id, String name, String city, String adress, LocalDateTime createdDate, Boolean isActive) {
         this.id = id;
         this.name = name;
         this.city = city;
@@ -48,11 +49,11 @@ public class DistributionCenter {
         this.city = city;
     }
 
-    public Date getCreatedDate() {
+    public LocalDateTime getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
     }
 
