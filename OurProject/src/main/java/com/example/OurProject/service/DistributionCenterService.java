@@ -1,8 +1,8 @@
-package com.example.OurProject.entity.repository;
+package com.example.OurProject.service;
 
 import com.example.OurProject.entity.DistributionCenter;
+import com.example.OurProject.entity.repository.BaseConnectionRepository;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -35,7 +35,7 @@ public class DistributionCenterService {
         existingCenter.setName(distributionCenter.getName());
        existingCenter.setCreatedDate(LocalDateTime.now());
         existingCenter.setCity(distributionCenter.getCity());
-        existingCenter.setAdress(distributionCenter.getAdress());
+        existingCenter.setAddress(distributionCenter.getAddress());
         existingCenter.setActive(distributionCenter.getActive());
 
         return baseConnectionRepository.save(existingCenter);

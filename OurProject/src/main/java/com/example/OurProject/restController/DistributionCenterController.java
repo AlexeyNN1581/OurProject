@@ -1,12 +1,13 @@
-package RestController;
+package com.example.OurProject.restController;
 
 import com.example.OurProject.entity.DistributionCenter;
-import com.example.OurProject.entity.repository.DistributionCenterService;
+import com.example.OurProject.service.DistributionCenterService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/distribution-centers")
 public class DistributionCenterController {
     private final DistributionCenterService centerService;
 
@@ -14,7 +15,7 @@ public class DistributionCenterController {
         this.centerService = distributionCenterService;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<DistributionCenter> getall() {
         return centerService.getAll();
 
@@ -41,7 +42,7 @@ public class DistributionCenterController {
         return centerService.create(center);
     }
     @PutMapping("/{id}")
-    public DistributionCenter putCentr(@RequestParam Long id,@RequestBody DistributionCenter center){
+    public DistributionCenter putCentr(@PathVariable Long id,@RequestBody DistributionCenter center){
         return  centerService.update(id,center);
 
 

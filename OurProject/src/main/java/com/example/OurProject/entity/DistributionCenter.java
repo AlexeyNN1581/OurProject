@@ -14,16 +14,16 @@ public class DistributionCenter {
     private Long id;
     private String name;
     private String city;
-    private String adress;
+    private String address;
     private Boolean isActive;
     private LocalDateTime createdDate;
 
 
-    public DistributionCenter(Long id, String name, String city, String adress, LocalDateTime createdDate, Boolean isActive) {
+    public DistributionCenter(Long id, String name, String city, String address, LocalDateTime createdDate, Boolean isActive) {
         this.id = id;
         this.name = name;
         this.city = city;
-        this.adress = adress;
+        this.address = address;
         this.createdDate = createdDate;
         this.isActive = isActive;
     }
@@ -33,12 +33,12 @@ public class DistributionCenter {
 
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCity() {
